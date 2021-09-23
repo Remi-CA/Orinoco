@@ -1,6 +1,25 @@
+body {
+    margin: 0 20px 0 20px;
+    background-color: #f3e9f1 !important;
+}
+
 .navbar {
     background-color: #f3e9f1 !important;
 }
+
+.nav-link {
+    color: #2C1E2C !important;
+}
+
+.btn-outline-primary {
+    color: #2C1E2C !important;
+    border-color: #2C1E2C !important
+}
+
+.btn-outline-primary:hover {
+    background-color: #ad89a6e5;
+}
+
 
 .col-lg-12 {
     padding-left: 0;
@@ -9,5 +28,9 @@
 .img-fluid {
     height: 500px;
     object-fit: cover;
+    border-radius: 30px 30px 0 0;
 }
 
+main {
+    padding-top: 50px;
+}

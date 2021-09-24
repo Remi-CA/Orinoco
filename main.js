@@ -7,7 +7,6 @@ const fetchCamera = async () => {
         .then((response) => response.json())
         .then((data) => (camerasData = data));
 
-    console.log(camerasData);
 };
 
 const cameraDisplay = async () => {
@@ -21,11 +20,11 @@ const cameraDisplay = async () => {
         <div class="card-body">
             <h5 class="card-title">${camera.name}</h5>
             <p class="card-text">${camera.description}</p>
-            <p class="card-text">${camera.price + " €"}</p>
+            <p class="card-text">${new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(camera.price/100)}</p>
         </div>
     </div>
     `
-    )
+    )  
     .join('')
     importHTML.innerHTML += "</div>"
 };

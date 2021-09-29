@@ -6,7 +6,6 @@ const fetchCamera = async () => {
     await fetch("http://localhost:3000/api/cameras")
         .then((response) => response.json())
         .then((data) => (camerasData = data));
-
 };
 
 

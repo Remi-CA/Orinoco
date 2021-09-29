@@ -1,14 +1,15 @@
-const selectionProduit = document.querySelector("#content");
+//window.location.search permet de sélection l'ID avec le point d'interrogation dans l'URL
+const urlId = window.location.search;
+console.log(urlId);
 
-const displayProduit = 
-`
-<div class="card"
-    <img class="card-img-top" src= alt="Photo camera">
-    <div class="card-body">
-        <h5 class="card-title"></h5>
-        <p class="card-text"></p>
-        <p class="card-text"></p>
-    </div>
-</div>
-`
-;
+//slice permet de supprimer le point d'interrogation
+const _id = urlId.slice(1);
+console.log(_id);
+
+const product = displayProduct();
+
+function displayProduct() {
+    return  fetch(`http://localhost:3000/api/cameras/${_id}`)
+    .then((response) => response.json())
+};
+console.log(article);

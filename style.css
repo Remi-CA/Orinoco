@@ -40,10 +40,22 @@ main {
 }
 
 .card {
-    max-width: 50%;
+    max-width: 900px;
 }
 
 .card-img-top {
     max-height: 300px;
-    max-width: 1119px;
+    max-width: 1000px;
+    object-fit: cover;
+}
+
+#content {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    column-gap: 20px;
+}
+
+a {
+    text-decoration: none !important;
 }

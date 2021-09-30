@@ -18,6 +18,13 @@ async function cameraProduct(){
             <div class="card-body">
                 <h5 class="card-title">${data.name}</h5>
                 <p class="card-text">${data.description}</p>
+                <form>
+                    <label for="option_produits"></label>
+                    <select name="option_produits" id="option_produits">
+                        <option value="option1">${data.lenses[1]}</option>
+                        <option value="option2">${data.lenses[2]}</option>
+                    </select>
+                </form></br>
                 <p class="card-text">${new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(data.price/100)}</p>
             </div>
     </div>

@@ -77,17 +77,25 @@ async function cameraProduct(){
 
     //Paramètrage du localStorage
         let produitRegisterLS = JSON.parse(localStorage.getItem("produit"));
+        const resquestConfirmationPopUp = () => {
+            if(window.confirm(`${data.name} à été ajouté au panier, voulez vous aller au panier ?`)){
+                window.location.href = "panier.html";
+            }
+            else{
 
+            }
+        }
+        
         if(produitRegisterLS){
             produitRegisterLS.push(displayPanier);
             localStorage.setItem("produit", JSON.stringify(produitRegisterLS));
-            console.log(produitRegisterLS);
+            resquestConfirmationPopUp();
         }
         else{
             produitRegisterLS =[];
             produitRegisterLS.push(displayPanier);
             localStorage.setItem("produit", JSON.stringify(produitRegisterLS));
-            console.log(produitRegisterLS);
+            resquestConfirmationPopUp();
         }
     });
 }

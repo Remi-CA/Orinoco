@@ -24,21 +24,65 @@ async function cameraProduct(){
                     </select>
                 </form></br>
                 <p class="card-text">${new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(data.price/100)}</p>
-                <button id="panier" type="envoyer" name="ajouter-au-panier">Ajouter au panier</button>
+                <button id="panier" type="submit" name="ajouter-au-panier">Ajouter au panier</button>
             </div>
     </div>
     `
 
-//Gérer les options d'achat en l'occurence les optiques pour les caméras    
-const options = data.lenses;
-let allOptions = [];
+//------Gérer les options d'achat en l'occurence les optiques pour les caméras------
+//Création de la variable recensant toutes les options d'optiques
 
-for (let i = 0; i < options.length; i++){
-    allOptions += `<option value="${i}">${options[i]}</option>`
+    const options = data.lenses;
+
+//Création d'une variable sous forme d'Array vide pour y impléter les options du produit
+
+    let allOptions = [];
+
+//Création d'une boucle for pour ajouter la totalité des options du produit
+
+    for (let i = 0; i < options.length; i++){
+        allOptions += `<option value="${i}">${options[i]}</option>`
+    }
+
+//Sélection la div avec l'ID pour générer le code HTML
+
+    const displayOption = document.getElementById("option_produits");
+
+//Génération du code HTML
+
+    displayOption.innerHTML = allOptions;
+
+//------Gestion du panier------
+//Sélection de l'ID du bouton panier
+
+    const panier = document.getElementById("panier");
+    console.log(panier);
+
+//Ecoute du bouton au click
+
+    panier.addEventListener("click", (event) => {
+        event.preventDefault();
+
+    //Prendre en compte le choix de l'utilisateur
+
+        const choiceOption = displayOption.value;
+        console.log(choiceOption);
+
+    //Afficher les valeurs dans le panier
+
+        let displayPanier = {
+            nomCamera: data.name,
+            optionCamera: choiceOption,
+            quantite: 1,
+            prix: data.price /100 + '€',
+        }
+        console.log(displayPanier);
+    });
+
+
 }
+cameraProduct();    
 
-const displayOption = document.getElementById("option_produits");
-displayOption.innerHTML = allOptions;
 
-}
-cameraProduct();
+
+

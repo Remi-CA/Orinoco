@@ -21,13 +21,24 @@ async function cameraProduct(){
                 <form>
                     <label for="option_produits"></label>
                     <select name="option_produits" id="option_produits">
-                        <option value="option1">${data.lenses[1]}</option>
-                        <option value="option2">${data.lenses[2]}</option>
                     </select>
                 </form></br>
                 <p class="card-text">${new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(data.price/100)}</p>
+                <button id="panier" type="envoyer" name="ajouter-au-panier">Ajouter au panier</button>
             </div>
     </div>
     `
+
+//Gérer les options d'achat en l'occurence les optiques pour les caméras    
+const options = data.lenses;
+let allOptions = [];
+
+for (let i = 0; i < options.length; i++){
+    allOptions += `<option value="${i}">${options[i]}</option>`
+}
+
+const displayOption = document.getElementById("option_produits");
+displayOption.innerHTML = allOptions;
+
 }
 cameraProduct();

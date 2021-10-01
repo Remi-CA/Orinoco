@@ -56,7 +56,6 @@ async function cameraProduct(){
 //Sélection de l'ID du bouton panier
 
     const panier = document.getElementById("panier");
-    console.log(panier);
 
 //Ecoute du bouton au click
 
@@ -66,7 +65,6 @@ async function cameraProduct(){
     //Prendre en compte le choix de l'utilisateur
 
         const choiceOption = displayOption.value;
-        console.log(choiceOption);
 
     //Afficher les valeurs dans le panier
 
@@ -76,13 +74,24 @@ async function cameraProduct(){
             quantite: 1,
             prix: data.price /100 + '€',
         }
-        console.log(displayPanier);
+
+    //Paramètrage du localStorage
+        let produitRegisterLS = JSON.parse(localStorage.getItem("produit"));
+
+        if(produitRegisterLS){
+            produitRegisterLS.push(displayPanier);
+            localStorage.setItem("produit", JSON.stringify(produitRegisterLS));
+            console.log(produitRegisterLS);
+        }
+        else{
+            produitRegisterLS =[];
+            produitRegisterLS.push(displayPanier);
+            localStorage.setItem("produit", JSON.stringify(produitRegisterLS));
+            console.log(produitRegisterLS);
+        }
     });
-
-
 }
 cameraProduct();    
-
 
 
 

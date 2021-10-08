@@ -19,7 +19,7 @@ else {
             `
     <div class="insertProduct">
         <div>Produit = ${produitRegisterLS[j].nomCamera} comprenant l'option ${produitRegisterLS[j].optionCamera}</div>
-        <div>Prix = ${produitRegisterLS[j].prix}</div>
+        <div>Prix = ${produitRegisterLS[j].prix} €</div>
         <div><button class="Delete">Retirer le produit du panier</button></div>
     </div>
     `;
@@ -50,3 +50,19 @@ for (let k = 0; k < btnDelete.length; k++) {
     })
 }
 
+let amountPrice = [];
+for (let l = 0; l < produitRegisterLS.length; l++) {
+    let productsPrice = produitRegisterLS[l].prix;
+    amountPrice.push(productsPrice);
+}
+
+const reducer = (acc, cur) => acc + cur;
+const finalPrice = amountPrice.reduce(reducer);
+
+const selectForFinalPrice = document.getElementById("Price");
+
+const displayFinalPrice = `
+<div class="PrixFinal">Le montant total à payer est de : ${finalPrice}</div>
+`
+
+selectForFinalPrice.innerHTML = displayFinalPrice;

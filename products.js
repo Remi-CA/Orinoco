@@ -72,7 +72,7 @@ async function cameraProduct() {
             nomCamera: data.name,
             optionCamera: choiceOption,
             quantite: 1,
-            prix: data.price / 100 + '€',
+            prix: data.price / 100,
         }
 
         //Paramètrage du localStorage

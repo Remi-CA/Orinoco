@@ -18,16 +18,35 @@ else {
         produitsPanier = produitsPanier +
             `
     <div class="insertProduct">
-        <div>Produits = ${produitRegisterLS[j].nomCamera} comprenant l'option ${produitRegisterLS[j].optionCamera}</div>
+        <div>Produit = ${produitRegisterLS[j].nomCamera} comprenant l'option ${produitRegisterLS[j].optionCamera}</div>
         <div>Prix = ${produitRegisterLS[j].prix}</div>
-        <div>Supprimer le produit</div>
+        <div><button class="Delete">Retirer le produit du panier</button></div>
     </div>
     `;
     }
     if (j == produitRegisterLS.length) {
         displayProduitsPanier.innerHTML = produitsPanier;
     }
-
-
-
 }
+
+const btnDelete = document.getElementsByClassName("Delete");
+let currentOrder = JSON.parse(localStorage.getItem("produit"));
+
+for (let k = 0; k < btnDelete.length; k++) {
+    btnDelete[k].addEventListener("click", (event) => {
+        event.preventDefault();
+        let productDelete = produitRegisterLS[k].nomCamera;
+        console.log(productDelete);
+
+        produitRegisterLS = produitRegisterLS.filter((el) => el.nomCamera !== productDelete)
+        localStorage.setItem("produit", JSON.stringify(produitRegisterLS));
+        window.location.href = "panier.html";
+        // if (currentOrder[k].nomCamera == productDelete) {
+        //     currentOrder = produitRegisterLS.splice([k], 1);
+
+        //     localStorage.setItem("product", JSON.stringify(produitRegisterLS));
+        //     window.location.href = "panier.html";
+        // }
+    })
+}
+

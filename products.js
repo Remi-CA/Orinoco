@@ -41,7 +41,7 @@ async function cameraProduct() {
     //Création d'une boucle for pour ajouter la totalité des options du produit
 
     for (let i = 0; i < options.length; i++) {
-        allOptions += `<option value="${i}">${options[i]}</option>`
+        allOptions += `<option value="${options[i]}">${options[i]}</option>`
     }
 
     //Sélection la div avec l'ID pour générer le code HTML

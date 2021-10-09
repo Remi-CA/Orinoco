@@ -66,3 +66,67 @@ const displayFinalPrice = `
 `
 
 selectForFinalPrice.innerHTML = displayFinalPrice;
+
+
+
+const settingForm = () => {
+    const selectForm = document.getElementById("Form");
+    const htmlForm = `
+        <div id="Formulaire">
+            <form>
+                <label for="prenom">Prénom</label>
+                <input id="prenom" type="text" name="prenom" required>
+                <label for="nom">Nom</label>
+                <input id="nom" type="text" name="nom" required>
+                <label for="adresse">Adresse</label>
+                <textarea name="adresse" id="adress" cols="30" rows="10" required></textarea>
+                <label for="ville">Ville</label>
+                <input id="city" type="text" name="ville" required>
+                <label for="CP">Code postal</label>
+                <input id="cp" type="text" name="CP">
+                <label for="email">E-mail</label>
+                <input id="mail" type="text" name="email" required>
+                <button id="SendForm" type="submit" name="SendForm">Valider la commande</button>
+            </form>
+            </div>
+        
+    `
+    selectForm.insertAdjacentHTML("afterbegin", htmlForm)
+}
+settingForm();
+
+const selectSendForm = document.getElementById("SendForm");
+
+selectSendForm.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const formValues = { 
+        prenom: document.getElementById("prenom").value,
+        nom: document.getElementById("nom").value,
+        adresse: document.getElementById("adress").value,
+        ville: document.getElementById("city").value,
+        CodePostal: document.getElementById("cp").value,
+        Mail: document.getElementById("mail").value
+    }
+
+    const recupPrenom = formValues.prenom;
+    if(/^[A-Z a-z]{3,25}$/.test(recupPrenom)){
+        
+        console.log("ok");
+    }
+    else {
+        console.log('pas ok');
+        alert("Veuillez saisir correctement le formulaire")
+    };
+
+    localStorage.setItem("formValues", JSON.stringify(formValues));
+
+
+
+    
+
+    const formToSend = { produitRegisterLS, formValues }
+    console.log(formToSend);
+})
+
+

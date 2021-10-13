@@ -59,21 +59,18 @@ const settingForm = () => {
     const htmlForm = `
         <div id="Formulaire">
             <form>
-                <label for="prenom">Prénom</label>
-                <input id="prenom" type="text" name="prenom" required>
+                <label for="firstName">Prénom</label>
+                <input id="firstName" type="text" name="firstName" required>
                 <div id="errorPrenom" class="errors"></div>
-                <label for="nom">Nom</label>
-                <input id="nom" type="text" name="nom" required>
+                <label for="lastName">Nom</label>
+                <input id="lastName" type="text" name="lastName" required>
                 <div id="errorNom" class="errors"></div>
-                <label for="adresse">Adresse</label>
-                <textarea name="adresse" id="adress" cols="30" rows="10" required></textarea>
-                <label for="ville">Ville</label>
-                <input id="city" type="text" name="ville" required>
-                <label for="CP">Code postal</label>
-                <input id="cp" type="text" name="CP">
-                <div id="errorCP" class="errors"></div>
+                <label for="address">Adresse</label>
+                <textarea name="address" id="address" cols="30" rows="10" required></textarea>
+                <label for="city">Ville</label>
+                <input id="city" type="text" name="city" required>
                 <label for="email">E-mail</label>
-                <input id="mail" type="text" name="email" required>
+                <input id="email" type="text" name="email" required>
                 <div id="errorMail" class="errors"></div>
                 <button id="SendForm" type="submit" name="SendForm">Valider la commande</button>
             </form>
@@ -90,12 +87,11 @@ selectSendForm.addEventListener("click", (event) => {
     event.preventDefault();
 
     const formValues = {
-        prenom: document.getElementById("prenom").value,
-        nom: document.getElementById("nom").value,
-        adresse: document.getElementById("adress").value,
-        ville: document.getElementById("city").value,
-        CodePostal: document.getElementById("cp").value,
-        Mail: document.getElementById("mail").value
+        firstName: document.getElementById("firstName").value,
+        lastName: document.getElementById("lastName").value,
+        address: document.getElementById("address").value,
+        city: document.getElementById("city").value,
+        email: document.getElementById("email").value
     }
 
     const textAlert = (value) => {
@@ -103,7 +99,7 @@ selectSendForm.addEventListener("click", (event) => {
     }
 
     function prenomCTRL() {
-        const recupPrenom = formValues.prenom;
+        const recupPrenom = formValues.firstName;
         if (/^[A-Z a-z]{3,25}$/.test(recupPrenom)) {
             document.getElementById("errorPrenom").textContent = ""
             return true;
@@ -115,7 +111,7 @@ selectSendForm.addEventListener("click", (event) => {
     }
 
     function nomCTRL() {
-        const recupNom = formValues.nom;
+        const recupNom = formValues.lastName;
         if (/^[A-Z a-z]{3,25}$/.test(recupNom)) {
             document.getElementById("errorNom").textContent = ""
             return true;
@@ -126,20 +122,9 @@ selectSendForm.addEventListener("click", (event) => {
         };
     }
 
-    function cpCTRL() {
-        const recupCP = formValues.CodePostal;
-        if (/^[0-9]{5}$/.test(recupCP)) {
-            document.getElementById("errorCP").textContent = ""
-            return true;
-        }
-        else {
-            document.getElementById("errorCP").textContent = "Erreur de saisie"
-            return false;
-        };
-    }
 
     function mailCTRL() {
-        const recupMail = formValues.Mail;
+        const recupMail = formValues.email;
         if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(recupMail)) {
             document.getElementById("errorMail").textContent = ""
             return true;
@@ -150,14 +135,35 @@ selectSendForm.addEventListener("click", (event) => {
         };
     }
 
-    if (prenomCTRL() && nomCTRL() && cpCTRL() && mailCTRL()) {
+    if (prenomCTRL() && nomCTRL() && mailCTRL()) {
         localStorage.setItem("formValues", JSON.stringify(formValues));
     }
     else {
         console.log("err");
     }
 
+    // const formToSend = { produitRegisterLS, formValues }
 
-    const formToSend = { produitRegisterLS, formValues }
-    console.log(formToSend);
-})
+    const order = {
+        contact: {
+            firstName: formValues.firstName,
+            lastName: formValues.lastName,
+            address: formValues.address,
+            city: formValues.city,
+            email: formValues.email,
+        },
+        products: produitRegisterLS,
+    }
+
+    const postDatasServer = fetch("http://localhost:3000/api/cameras/order",
+        {
+            method: "POST",
+            body: JSON.stringify(order),
+            headers: { "Content-Type": "application/json" },
+        }
+    )
+        .then((response) => response.json())
+        .then(data)
+    console.log(response);
+});
+

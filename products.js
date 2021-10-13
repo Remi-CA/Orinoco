@@ -13,7 +13,7 @@ async function cameraProduct() {
     let data = await reponse.json();
     selectionProduct.innerHTML =
         `
-    <div class="card">
+    <div class="card card-product">
             <img class="card-img-top" src=${data.imageUrl} alt="Photo camera">
             <div class="card-body">
                 <h5 class="card-title">${data.name}</h5>

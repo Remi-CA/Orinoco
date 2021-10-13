@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@500&display=swap');
+
 body {
     margin: 0 20px 0 20px;
     background-color: #f3e9f1 !important;
+    font-family: 'Sarabun', sans-serif !important;
 }
 
 .navbar {
@@ -35,29 +38,56 @@ main {
     padding-top: 50px;
 }
 
+main > h1 {
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
 #content > .container {
     display: flex;
 }
 
-.card {
+.card-accueil {
     max-width: 900px;
+    box-shadow: 0 0 20px 7px rgba(0, 0, 0, 0.295);
+    -webkit-transition: all 1s ease; /* Safari et Chrome */
+    -moz-transition: all 1s ease; /* Firefox */
+    -ms-transition: all 1s ease; /* Internet Explorer 9 */
+    -o-transition: all 1s ease; /* Opera */
+    transition: all 1s ease;
+}
+
+.card-product {
+    max-width: 900px;
+    box-shadow: 0 0 20px 7px rgba(0, 0, 0, 0.295);
+    margin: 0 auto;
+    
+}
+
+.card-accueil:hover {
+    -webkit-transform:scale(1.05); /* Safari et Chrome */
+    -moz-transform:scale(1.05); /* Firefox */
+    -ms-transform:scale(1.05); /* Internet Explorer 9 */
+    -o-transform:scale(1.05); /* Opera */
+    transform:scale(1.05);
 }
 
 .card-img-top {
     max-height: 300px;
     max-width: 1000px;
+    height: 240px;
     object-fit: cover;
 }
 
 #content {
     display: flex;
-    flex-wrap: wrap;
     row-gap: 20px;
     column-gap: 20px;
 }
 
 a {
     text-decoration: none !important;
+    color: black;
 }
 
 #Formulaire > form {
@@ -67,6 +97,14 @@ a {
     margin-top: 40px;
 }
 
-/* .errors {
-    color: bold red !important;
-} */
+footer {
+    display: flex;
+    flex-direction: column;
+    padding-top: 2rem;
+    row-gap: 1rem;
+    padding: 3rem 0 3rem 3rem;
+}
+
+footer > a {
+    font-size: 20px;
+}

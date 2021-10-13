@@ -18,7 +18,7 @@ const importHTML = document.querySelector("#content");
     importHTML.innerHTML += camerasData.map(
         (camera) =>  
     `
-    <div class="card">
+    <div class="card card-accueil">
         <a class="liens" href="products.html?${camera._id}">
             <img class="card-img-top" src=${camera.imageUrl} alt="Photo camera">
             <div class="card-body">

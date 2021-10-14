@@ -69,6 +69,7 @@ async function cameraProduct() {
         //Afficher les valeurs dans le panier
 
         let displayPanier = {
+            imageCamera: data.imageUrl,
             nomCamera: data.name,
             optionCamera: choiceOption,
             quantite: 1,

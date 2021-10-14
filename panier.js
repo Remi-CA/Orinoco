@@ -18,9 +18,11 @@ else {
         produitsPanier = produitsPanier +
             `
     <div class="insertProduct">
-        <div>Produit = ${produitRegisterLS[j].nomCamera} comprenant l'option ${produitRegisterLS[j].optionCamera}</div>
-        <div>Prix = ${produitRegisterLS[j].prix} €</div>
-        <div><button class="Delete">Retirer le produit du panier</button></div>
+        <img class="col-2" src=${produitRegisterLS[j].imageCamera} alt="Photo camera">
+        <div class="col-2">${produitRegisterLS[j].nomCamera}</div>
+        <div class="col-2">${produitRegisterLS[j].optionCamera}</div>
+        <div class="col-2">${produitRegisterLS[j].prix} €</div>
+        <div class="col-2"><button class="Delete">Retirer le produit du panier</button></div>
     </div>
     `;
     }
@@ -48,7 +50,7 @@ const finalPrice = produitRegisterLS.reduce((acc, cur) => acc + cur.prix, 0)
 const selectForFinalPrice = document.getElementById("Price");
 
 const displayFinalPrice = `
-<div class="PrixFinal">Le montant total à payer est de : ${finalPrice}</div>
+<div class="PrixFinal">Le montant total à payer est de : ${finalPrice} €</div>
 `
 selectForFinalPrice.innerHTML = displayFinalPrice;
 
@@ -165,9 +167,10 @@ selectSendForm.addEventListener("click", (event) => {
         }
     )
         .then((response) => response.json())
-        .then((data) => {
-            localStorage.clear();
-            localStorage.setItem("orderId", data.orderId)})
+        .then((json) => {
+            console.log(json);})
+            // localStorage.clear();
+            // localStorage.setItem("orderId", data.orderId)})
 
 });
 

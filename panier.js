@@ -18,7 +18,7 @@ else {
         produitsPanier = produitsPanier +
             `
     <div class="insertProduct">
-        <img class="col-2" src=${produitRegisterLS[j].imageCamera} alt="Photo camera">
+        <img class="col-2 small-img" src=${produitRegisterLS[j].imageCamera} alt="Photo camera">
         <div class="col-2">${produitRegisterLS[j].nomCamera}</div>
         <div class="col-2">${produitRegisterLS[j].optionCamera}</div>
         <div class="col-2">${produitRegisterLS[j].prix} €</div>
@@ -68,7 +68,7 @@ const settingForm = () => {
                 <input id="lastName" type="text" name="lastName" required>
                 <div id="errorNom" class="errors"></div>
                 <label for="address">Adresse</label>
-                <textarea name="address" id="address" cols="30" rows="10" required></textarea>
+                <textarea name="address" id="address" cols="20" rows="2" required></textarea>
                 <label for="city">Ville</label>
                 <input id="city" type="text" name="city" required>
                 <label for="email">E-mail</label>

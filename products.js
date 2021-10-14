@@ -83,7 +83,7 @@ async function cameraProduct() {
                 window.location.href = "panier.html";
             }
             else {
-                console.log("ok");
+                window.location.href = "index.html";
             }
         }
 

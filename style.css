@@ -151,3 +151,6 @@ button, select {
   line-height: 1.9rem;
 }
 
+.card-text > span {
+    font-weight: bold;
+}

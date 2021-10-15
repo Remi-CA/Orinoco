@@ -144,8 +144,6 @@ selectSendForm.addEventListener("click", (event) => {
         console.log("err");
     }
 
-    // const formToSend = { produitRegisterLS, formValues }
-
     let products = [produitRegisterLS[0].id];
 
     const order = {
@@ -157,9 +155,9 @@ selectSendForm.addEventListener("click", (event) => {
             email: formValues.email,
         },
         products: products,
-        
+
     }
-   
+
 
     const postDatasServer = fetch("http://localhost:3000/api/cameras/order",
         {
@@ -171,6 +169,12 @@ selectSendForm.addEventListener("click", (event) => {
         .then((response) => response.json())
         .then((json) => {
             localStorage.clear();
-            localStorage.setItem("orderId", json.orderId)})
+            localStorage.setItem("orderId", json.orderId)
+            localStorage.setItem("pricePaid", finalPrice)
+            document.location.href = "validation.html";
+        })
+        .catch((e) => {
+            alert('Nous avons recontré un problème : Veuillez nous excuser');
+        })
 
 });

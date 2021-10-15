@@ -69,12 +69,14 @@ async function cameraProduct() {
         //Afficher les valeurs dans le panier
 
         let displayPanier = {
+            id: data._id,
             imageCamera: data.imageUrl,
             nomCamera: data.name,
             optionCamera: choiceOption,
             quantite: 1,
             prix: data.price / 100,
         }
+
 
         //Paramètrage du localStorage
         let produitRegisterLS = JSON.parse(localStorage.getItem("produit"));

@@ -146,6 +146,8 @@ selectSendForm.addEventListener("click", (event) => {
 
     // const formToSend = { produitRegisterLS, formValues }
 
+    let products = [produitRegisterLS[0].id];
+
     const order = {
         contact: {
             firstName: formValues.firstName,
@@ -154,10 +156,10 @@ selectSendForm.addEventListener("click", (event) => {
             city: formValues.city,
             email: formValues.email,
         },
-        products: produitRegisterLS,
+        products: products,
+        
     }
-
-    console.log(order);
+   
 
     const postDatasServer = fetch("http://localhost:3000/api/cameras/order",
         {
@@ -168,9 +170,7 @@ selectSendForm.addEventListener("click", (event) => {
     )
         .then((response) => response.json())
         .then((json) => {
-            console.log(json);})
-            // localStorage.clear();
-            // localStorage.setItem("orderId", data.orderId)})
+            localStorage.clear();
+            localStorage.setItem("orderId", json.orderId)})
 
 });
-

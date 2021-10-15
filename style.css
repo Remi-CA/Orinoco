@@ -15,15 +15,6 @@ body {
     color: #2C1E2C !important;
 }
 
-.btn-outline-primary {
-    color: #2C1E2C !important;
-    border-color: #2C1E2C !important
-}
-
-.btn-outline-primary:hover {
-    background-color: #ad89a6e5;
-}
-
 
 .col-lg-12 {
     padding-left: 0;

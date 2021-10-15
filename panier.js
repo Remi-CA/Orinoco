@@ -61,22 +61,22 @@ const settingForm = () => {
     const htmlForm = `
         <div id="Formulaire">
             <form>
-                <label for="firstName">Prénom</label>
-                <input id="firstName" type="text" name="firstName" required>
-                <div id="errorPrenom" class="errors"></div>
-                <label for="lastName">Nom</label>
-                <input id="lastName" type="text" name="lastName" required>
-                <div id="errorNom" class="errors"></div>
-                <label for="address">Adresse</label>
-                <textarea name="address" id="address" cols="20" rows="2" required></textarea>
-                <label for="city">Ville</label>
-                <input id="city" type="text" name="city" required>
-                <label for="email">E-mail</label>
-                <input id="email" type="text" name="email" required>
-                <div id="errorMail" class="errors"></div>
-                <button id="SendForm" type="submit" name="SendForm">Valider la commande</button>
+                    <label for="firstName">Prénom</label>
+                    <input id="firstName" type="text" placeholder="First name" name="firstName" required>
+                    <div id="errorPrenom" class="errors"></div>
+                    <label for="lastName">Nom</label>
+                    <input id="lastName" type="text" name="lastName" required>
+                    <div id="errorNom" class="errors"></div>
+                    <label for="address">Adresse</label>
+                    <textarea name="address" id="address" cols="20" rows="2" required></textarea>
+                    <label for="city">Ville</label>
+                    <input id="city" type="text" name="city" required>
+                    <label for="email">E-mail</label>
+                    <input id="email" type="text" name="email" required>
+                    <div id="errorMail" class="errors"></div>
+                    <button id="SendForm" class="btn btn-primary" type="submit" name="SendForm">Valider la commande</button>      
             </form>
-            </div>
+        </div>
         
     `
     selectForm.insertAdjacentHTML("afterbegin", htmlForm)
@@ -96,9 +96,6 @@ selectSendForm.addEventListener("click", (event) => {
         email: document.getElementById("email").value
     }
 
-    const textAlert = (value) => {
-        return `${value} A revoir`
-    }
 
     function prenomCTRL() {
         const recupPrenom = formValues.firstName;

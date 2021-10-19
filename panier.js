@@ -62,17 +62,19 @@ const settingForm = () => {
         <div id="Formulaire">
             <form>
                     <label for="firstName">Prénom</label>
-                    <input id="firstName" type="text" placeholder="First name" name="firstName" required>
+                    <input id="firstName" type="text" placeholder="Prénom" name="firstName" required>
                     <div id="errorPrenom" class="errors"></div>
                     <label for="lastName">Nom</label>
-                    <input id="lastName" type="text" name="lastName" required>
+                    <input id="lastName" type="text" placeholder="Nom" name="lastName" required>
                     <div id="errorNom" class="errors"></div>
                     <label for="address">Adresse</label>
-                    <textarea name="address" id="address" cols="20" rows="2" required></textarea>
+                    <textarea name="address" placeholder="Adresse" id="address" cols="20" rows="2" required></textarea>
+                    <div id="errorAddress" class="errors"></div>
                     <label for="city">Ville</label>
-                    <input id="city" type="text" name="city" required>
+                    <input id="city" type="text" placeholder="Ville" name="city" required>
+                    <div id="errorCity" class="errors"></div>
                     <label for="email">E-mail</label>
-                    <input id="email" type="text" name="email" required>
+                    <input id="email" type="text" placeholder="E-mail" name="email" required>
                     <div id="errorMail" class="errors"></div>
                     <button id="SendForm" class="btn btn-primary" type="submit" name="SendForm">Valider la commande</button>      
             </form>
@@ -134,14 +136,38 @@ selectSendForm.addEventListener("click", (event) => {
         };
     }
 
-    if (prenomCTRL() && nomCTRL() && mailCTRL()) {
+    function addressCTRL() {
+        const recupAddress = formValues.address;
+        if (/^[a-zA-Z0-9\s,.'-]{3,}$/.test(recupAddress)) {
+            document.getElementById("errorAddress").textContent = ""
+            return true;
+        }
+        else {
+            document.getElementById("errorAddress").textContent = "Erreur de saisie"
+            return false;
+        };
+    }
+
+    function cityCTRL() {
+        const recupCity = formValues.city;
+        if (/^[a-zA-Z\u0080-\u024F\s\/\-\)\(\`\.\"\']+$/.test(recupCity)) {
+            document.getElementById("errorCity").textContent = ""
+            return true;
+        }
+        else {
+            document.getElementById("errorCity").textContent = "Erreur de saisie"
+            return false;
+        };
+    }
+
+    if (prenomCTRL() && nomCTRL() && addressCTRL() && cityCTRL() && mailCTRL()) {
         localStorage.setItem("formValues", JSON.stringify(formValues));
     }
     else {
-        console.log("err");
+        return false;
     }
 
-    let products = [produitRegisterLS[0].id];
+    let products = produitRegisterLS.map(product => product.id);
 
     const order = {
         contact: {

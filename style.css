@@ -90,7 +90,7 @@ a {
 
 footer {
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
     padding-top: 2rem;
     row-gap: 1rem;
     padding: 3rem 0 3rem 3rem;
@@ -144,4 +144,61 @@ button, select {
 
 .card-text > span {
     font-weight: bold;
+}
+
+.errors {
+    color: red;
+}
+
+
+@media screen and (max-width: 1260px) {
+    #content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
+    #container {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 1000px) {
+    .navbar-expand-lg .navbar-collapse {
+        display: initial;
+        flex-basis: 0;
+    }
+    .nav-tabs {
+        border-bottom: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #content {
+        display: grid;
+        grid-template-columns: 1fr ;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+
+    footer > span {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 480px){
+
+    .navbar {
+        display: flex;
+        flex-direction: column;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+    }
 }

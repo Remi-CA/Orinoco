@@ -22,7 +22,7 @@ else {
         <div class="col-2">${produitRegisterLS[j].nomCamera}</div>
         <div class="col-2">${produitRegisterLS[j].optionCamera}</div>
         <div class="col-2">${produitRegisterLS[j].prix} €</div>
-        <div class="col-2"><button class="Delete">Retirer le produit du panier</button></div>
+        <div class="col-2"><button class="Delete">Retirer le produit du panier<i class="fas fa-trash-alt"></i></button></div>
     </div>
     `;
     }

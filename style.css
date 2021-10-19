@@ -105,6 +105,10 @@ footer > a {
     flex-direction: row;
 }
 
+.insertProduct > .col-2 > .Delete {
+    height: 5rem;
+}
+
 main > #container {
     display: flex;
     flex-direction: column;
@@ -150,6 +154,10 @@ button, select {
     color: red;
 }
 
+.fa-trash-alt:before {
+    display: none;
+}
+
 
 @media screen and (max-width: 1260px) {
     #content {
@@ -162,6 +170,17 @@ button, select {
         display: none;
     }
 
+    .Delete {
+        visibility: hidden;
+        font-size: 0px;
+    }
+
+    .fa-trash-alt:before {
+        display: initial;
+        visibility: initial;
+        font-size: 30px;
+    }
+
 }
 
 @media screen and (max-width: 1000px) {
@@ -172,7 +191,47 @@ button, select {
     .nav-tabs {
         border-bottom: none;
     }
+
+    .Image {
+        display: none;
+    }
+
+    .small-img{
+        display: none;
+    }
+
+    .insertProduct > .col-2 {
+        min-width: 180px;
+    }
+
+    #En-tete > .col-2 {
+        min-width: 180px;
+    }
+
+    #Price {
+        max-width: 380px;
+    }
 }
+
+@media screen and (max-width: 760px) {
+    main > #container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .insertProduct {
+        flex-direction: column;
+        border: solid 1px black;
+    }
+
+    #En-tete {
+        display: none;
+    }
+}
+
+
+
 
 @media screen and (max-width: 600px) {
     #content {
@@ -202,3 +261,4 @@ button, select {
         flex-direction: column;
     }
 }
+
